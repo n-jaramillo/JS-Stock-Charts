@@ -13,51 +13,20 @@
     <div id="root">
         <div class="container mt-5 mb-5">
             <h1 class="display-2">1. Stock Price Over Time</h1>
-            <canvas id="time-chart" ></canvas>
+            <canvas id="time-chart"></canvas>
         </div>
         <div class="container mt-5 mb-5">
             <h1 class="display-2">2. Highest Stock Price</h1>
-            <canvas id="highest-price-chart" ></canvas>
+            <canvas id="highest-price-chart"></canvas>
         </div>
         <div class="container mt-5 mb-5">
             <h1 class="display-2">3. Average Stock Price</h1>
-            <canvas id="average-price-chart" ></canvas>
+            <canvas id="average-price-chart"></canvas>
         </div>
     </div>
     <!-- Our JavaScript Code  -->
     <script src="mockData.js"></script>
     <script src="index.js"></script>
-    <script>
-        const labels = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-        ];
-      
-        const data = {
-          labels: labels,
-          datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-          }]
-        };
-      
-        const config = {
-          type: 'line',
-          data: data,
-          options: {}
-        };
-      </script>      
-      <script>
-        const myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
-      </script>      
 </body>
+
 </html>
