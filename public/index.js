@@ -6,23 +6,15 @@ async function main() {
 
     // api key: 4e62783a6f9b4b36ac43ae0f73d02656
 
-    let response = await fetch ('https://api.twelvedata.com/time_series?symbol=GME,MSFT,DIS,BNTX&interval=1month&apikey=4e62783a6f9b4b36ac43ae0f73d02656')
+    //let response = await fetch ('https://api.twelvedata.com/time_series?symbol=GME,MSFT,DIS,BNTX&interval=1day&apikey=4e62783a6f9b4b36ac43ae0f73d02656')
 
-    let responseText = await response.text()
+    //let responseText = await response.text()
 
-    console.log(responseText)
-    // GME stock symbol request
-    // https://api.twelvedata.com/symbol_search?symbol=GME
+    //console.log(responseText)
 
-    // MSFT stock symbol request
-    // https://api.twelvedata.com/symbol_search?symbol=MSFT
+    const {GME, MSFT, DIS, BNTX} = mockData
 
-    // DIS stock symbol request
-    // https://api.twelvedata.com/symbol_search?symbol=DIS
-
-    // BNTX stock symbol request
-    // https://api.twelvedata.com/symbol_search?symbol=BNTX
-
+    const stocks = [GME, MSFT, DIS, BNTX]
 }
 
 main()
