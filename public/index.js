@@ -1,5 +1,3 @@
-const { Chart } = require("chart.js");
-
 async function main() {
 
     const timeChartCanvas = document.querySelector('#time-chart');
@@ -37,8 +35,21 @@ async function main() {
     // Highest Chart
     const highestChart = new Chart(highestPriceChartCanvas.getContext('2d'), {
         type: 'bar',
-        data: {}
+        data: {
+            labels: stocks.map(stock => (stock.meta.symbol)),
+            datasets: stocks.map(stock => ({
+                label: stock.meta.symbol,
+                data: stock.values.map(value => parseFloat(value.high)), //getHighestPrice
+                backgroundColor: getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol),
+            }))
+        }
     });
+
+    function getHighestPrice(stock) {
+        let highestStockPrice;
+        let highestOverallPrice;
+    }
 
     // Average Chart
     /* const avgChart = new Chart(averagePriceChartCanvas.getContext('2d'), {
