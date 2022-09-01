@@ -15,6 +15,9 @@ async function main() {
     const {GME, MSFT, DIS, BNTX} = mockData
 
     const stocks = [GME, MSFT, DIS, BNTX]
+
+    stocks.forEach(stock => stock.values.reverse())
+
     const myChart = new Chart(timeChartCanvas.getContext('2d'), {
         type: 'line',
         data: {
