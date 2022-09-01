@@ -6,9 +6,11 @@ async function main() {
 
     // api key: 4e62783a6f9b4b36ac43ae0f73d02656
 
+    let result = await fetch ('https://api.twelvedata.com/time_series?symbol=GME,MSFT,DIS,BNTX&interval=1min&apikey=4e62783a6f9b4b36ac43ae0f73d02656')
+
     // GME stock symbol request
     // https://api.twelvedata.com/symbol_search?symbol=GME
-    
+
     // MSFT stock symbol request
     // https://api.twelvedata.com/symbol_search?symbol=MSFT
 
