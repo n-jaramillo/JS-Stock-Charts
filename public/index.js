@@ -1,3 +1,5 @@
+const { Chart } = require("chart.js");
+
 async function main() {
 
     const timeChartCanvas = document.querySelector('#time-chart');
@@ -33,8 +35,16 @@ async function main() {
     });
 
     // Highest Chart
+    const highestChart = new Chart(highestPriceChartCanvas.getContext('2d'), {
+        type: 'bar',
+        data: {}
+    });
 
     // Average Chart
+    /* const avgChart = new Chart(averagePriceChartCanvas.getContext('2d'), {
+        type: 'pie',
+        data: {}
+    }); */
 
     function getColor(stock) {
         if (stock === "GME") {
