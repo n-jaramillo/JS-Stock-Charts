@@ -59,10 +59,18 @@ async function main() {
     }
 
     // Average Chart
-    /* const avgChart = new Chart(averagePriceChartCanvas.getContext('2d'), {
+    const avgChart = new Chart(averagePriceChartCanvas.getContext('2d'), {
         type: 'pie',
-        data: {}
-    }); */
+        data: {
+            labels: stocks.map(stock => (stock.meta.symbol)),
+            datasets: [{
+                label: 'Highest',
+                data: stocks.map(stock => getAverageStock(stock)),
+                backgroundColor: stocks.map(stock => getColor(stock.meta.symbol)),
+                borderColor: stocks.map(stock => getColor(stock.meta.symbol)),
+            }]
+        }
+    }); 
 
     stocks.map(stock => getAverageStock(stock))
     function getAverageStock(stock) {
@@ -85,7 +93,7 @@ async function main() {
         values.forEach((value) => {average += value})
 
         average = average / values.length
-        
+
         return average
     }
 
