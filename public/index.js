@@ -55,7 +55,6 @@ async function main() {
                 highestStockPrice = value
             }
         })
-        console.log(highestStockPrice)
         return highestStockPrice
     }
 
@@ -64,6 +63,28 @@ async function main() {
         type: 'pie',
         data: {}
     }); */
+
+    stocks.map(stock => getAverageStock(stock))
+    function getAverageStock(stock) {
+        // get average of high and low per day
+        let highValue = stock.values.map(value => value.high)
+        let lowValue = stock.values.map(value => value.low)
+
+        let highest = 0
+        let lowest = 0
+        highValue.forEach((value) => {highest += parseFloat(value)})
+        lowValue.forEach((value) => {lowest += parseFloat(value)})
+
+        let average = ((highest + lowest) / 2) / highValue.length
+        console.log(average)
+
+        // let values = stock.values.map(function(value) {
+        //     return ((value.low + value.high) / 2)
+        // })
+        //console.log(values)
+
+        // return average
+    }
 
     function getColor(stock) {
         if (stock === "GME") {
