@@ -4,18 +4,10 @@ async function main() {
     const highestPriceChartCanvas = document.querySelector('#highest-price-chart');
     const averagePriceChartCanvas = document.querySelector('#average-price-chart');
 
-    // api key: 4e62783a6f9b4b36ac43ae0f73d02656
-
-    //let response = await fetch ('https://api.twelvedata.com/time_series?symbol=GME,MSFT,DIS,BNTX&interval=1day&apikey=4e62783a6f9b4b36ac43ae0f73d02656')
-
-    //let responseText = await response.text()
-
-    //console.log(responseText)
-
     const { GME, MSFT, DIS, BNTX } = mockData
 
     const stocks = [GME, MSFT, DIS, BNTX]
-    
+
     stocks.forEach(stock => stock.values.reverse())
 
     // Time Chart
@@ -46,11 +38,12 @@ async function main() {
         }
     });
 
+    // Function to get the highest price for each stock symbol
     function getHighestPrice(stock) {
         let values = stock.values.map(value => value.high)
         let highestStockPrice = values[0];
 
-        let highest = values.forEach(function(value) {
+        let highest = values.forEach(function (value) {
             if (value > highestStockPrice) {
                 highestStockPrice = value
             }
@@ -70,33 +63,22 @@ async function main() {
                 borderColor: stocks.map(stock => getColor(stock.meta.symbol)),
             }]
         }
-    }); 
+    });
 
-    stocks.map(stock => getAverageStock(stock))
+    // Function to get the average price of each stock symbol
     function getAverageStock(stock) {
-        //get average of high and low per day
-        // let highValue = stock.values.map(value => value.high)
-        // let lowValue = stock.values.map(value => value.low)
-
-        // let highest = 0
-        // let lowest = 0
-
-        // highValue.forEach((value) => {highest += parseFloat(value)})
-        // lowValue.forEach((value) => {lowest += parseFloat(value)})
-
-        // let average = ((highest + lowest) / 2) / highValue.length
-        // return average
         let average = 0;
 
         let values = stock.values.map(value => ((parseFloat(value.high) + parseFloat(value.low)) / 2))
-        
-        values.forEach((value) => {average += value})
+
+        values.forEach((value) => { average += value })
 
         average = average / values.length
 
         return average
     }
 
+    // Function to change color based off stock symbol
     function getColor(stock) {
         if (stock === "GME") {
             return 'rgba(61, 161, 61, 0.7)'
@@ -111,7 +93,6 @@ async function main() {
             return 'rgba(166, 43, 158, 0.7)'
         }
     }
-
 }
 
 
