@@ -22,8 +22,8 @@ async function main() {
             datasets: stocks.map(stock => ({
                 label: stock.meta.symbol,
                 data: stock.values.map(value => parseFloat(value.high)),
-                backgroundColor: ,
-                borderColor: '
+                backgroundColor: getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol),
             }))
         }
     });
