@@ -39,27 +39,39 @@ async function main() {
             labels: stocks.map(stock => (stock.meta.symbol)),
             datasets: stocks.map(stock => ({
                 label: stock.meta.symbol,
-                data: stock.values.map(value => parseFloat(value.high)), //getHighestPrice
+                data: [500, 500, 500, 500],
                 backgroundColor: getColor(stock.meta.symbol),
                 borderColor: getColor(stock.meta.symbol),
             }))
         }
     });
 
-    function getHighestIndividualPrice(stock) {
-        let highestStockPrice = 0;
-        stock.values.forEach(function (e) {
-            if (e > highestStockPrice) { highestStockPrice = e }
+    // const highestChart = new Chart(highestPriceChartCanvas.getContext('2d'), {
+    //     type: 'bar',
+    //     data: {
+    //         labels: stocks.map(stock => (stock.meta.symbol)),
+    //         datasets: stocks.map(stock => ({
+    //             label: stock.meta.symbol,
+    //             data: [500, 500, 500, 500],
+    //             backgroundColor: getColor(stock.meta.symbol),
+    //             borderColor: getColor(stock.meta.symbol),
+    //         }))
+    //     }
+    // });
+
+
+    function getHighestPrice(stock) {
+        let values = stock.values.map(value => value.high)
+        let highestStockPrice = values[0];
+
+        let highest = values.forEach(function(value) {
+            if (value > highestStockPrice) {
+                highestStockPrice = value
+            }
         })
         console.log(highestStockPrice)
-
-        
-        let values = stocks[0].values.map(value => value.high) // set values[] to each high value in stock
-        console.log(values)
-        console.log((stocks[0].values[0].high))
+        return highestStockPrice
     }
-
-    /*function getHighestOverallPrice(stock) {}*/
 
     // Average Chart
     /* const avgChart = new Chart(averagePriceChartCanvas.getContext('2d'), {
