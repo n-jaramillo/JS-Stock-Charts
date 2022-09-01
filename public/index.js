@@ -18,7 +18,8 @@ async function main() {
 
     stocks.forEach(stock => stock.values.reverse())
 
-    const myChart = new Chart(timeChartCanvas.getContext('2d'), {
+    // Time Chart
+    const timeChart = new Chart(timeChartCanvas.getContext('2d'), {
         type: 'line',
         data: {
             labels: stocks[0].values.map(value => value.datetime),
@@ -30,6 +31,10 @@ async function main() {
             }))
         }
     });
+
+    // Highest Chart
+
+    // Average Chart
 
     function getColor(stock) {
         if (stock === "GME") {
