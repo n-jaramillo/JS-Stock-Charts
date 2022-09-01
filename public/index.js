@@ -18,7 +18,7 @@ async function main() {
     const myChart = new Chart(timeChartCanvas.getContext('2d'), {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: stocks[0].values.map(value => value.datetime),
             datasets: [{
                 label: '# of Votes',
                 data: [12, 19, 3, 5, 2, 3],
@@ -27,6 +27,10 @@ async function main() {
             }]
         }
     });
+
+    console.log(stocks[0].values)         
+
+    
 }
 
 
