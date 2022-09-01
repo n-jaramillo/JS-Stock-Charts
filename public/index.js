@@ -20,8 +20,8 @@ async function main() {
         data: {
             labels: stocks[0].values.map(value => value.datetime),
             datasets: stocks.map(stock => ({
-                label: ,
-                data: ,
+                label: stock.meta.symbol,
+                data: stock.values.map(value => parseFloat(value.high)),
                 backgroundColor: ,
                 borderColor: '
             }))
