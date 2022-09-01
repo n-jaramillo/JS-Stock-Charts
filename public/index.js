@@ -37,28 +37,14 @@ async function main() {
         type: 'bar',
         data: {
             labels: stocks.map(stock => (stock.meta.symbol)),
-            datasets: stocks.map(stock => ({
-                label: stock.meta.symbol,
-                data: [500, 500, 500, 500],
-                backgroundColor: getColor(stock.meta.symbol),
-                borderColor: getColor(stock.meta.symbol),
-            }))
+            datasets: [{
+                label: 'Highest',
+                data: stocks.map(stock => getHighestPrice(stock)),
+                backgroundColor: stocks.map(stock => getColor(stock.meta.symbol)),
+                borderColor: stocks.map(stock => getColor(stock.meta.symbol)),
+            }]
         }
     });
-
-    // const highestChart = new Chart(highestPriceChartCanvas.getContext('2d'), {
-    //     type: 'bar',
-    //     data: {
-    //         labels: stocks.map(stock => (stock.meta.symbol)),
-    //         datasets: stocks.map(stock => ({
-    //             label: stock.meta.symbol,
-    //             data: [500, 500, 500, 500],
-    //             backgroundColor: getColor(stock.meta.symbol),
-    //             borderColor: getColor(stock.meta.symbol),
-    //         }))
-    //     }
-    // });
-
 
     function getHighestPrice(stock) {
         let values = stock.values.map(value => value.high)
