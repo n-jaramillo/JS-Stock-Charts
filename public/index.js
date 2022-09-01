@@ -12,10 +12,10 @@ async function main() {
 
     //console.log(responseText)
 
-    const {GME, MSFT, DIS, BNTX} = mockData
+    const { GME, MSFT, DIS, BNTX } = mockData
 
     const stocks = [GME, MSFT, DIS, BNTX]
-
+    
     stocks.forEach(stock => stock.values.reverse())
 
     // Time Chart
@@ -46,10 +46,20 @@ async function main() {
         }
     });
 
-    function getHighestPrice(stock) {
-        let highestStockPrice;
-        let highestOverallPrice;
+    function getHighestIndividualPrice(stock) {
+        let highestStockPrice = 0;
+        stock.values.forEach(function (e) {
+            if (e > highestStockPrice) { highestStockPrice = e }
+        })
+        console.log(highestStockPrice)
+
+        
+        let values = stocks[0].values.map(value => value.high) // set values[] to each high value in stock
+        console.log(values)
+        console.log((stocks[0].values[0].high))
     }
+
+    /*function getHighestOverallPrice(stock) {}*/
 
     // Average Chart
     /* const avgChart = new Chart(averagePriceChartCanvas.getContext('2d'), {
@@ -71,6 +81,7 @@ async function main() {
             return 'rgba(166, 43, 158, 0.7)'
         }
     }
+
 }
 
 
